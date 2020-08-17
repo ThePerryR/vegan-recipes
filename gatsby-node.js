@@ -15,9 +15,11 @@ exports.onPostBuild = () => {
   const outputLocation = `${__dirname}/public/functions`
 
   if (fs.existsSync(outputLocation)) {
+    console.log('removing')
     rimraf.sync(outputLocation)
   }
   console.log('foo')
+  fs.mkdirSync(outputLocation)
 
   // Get all the functions.
   const modules = glob.sync("*.js", { cwd: srcLocation })
@@ -25,6 +27,7 @@ exports.onPostBuild = () => {
     const moduleSrc = path.join(srcLocation, src)
     const moduleOut = path.join(outputLocation, path.basename(src, path.extname(src)) + ".js")
     // Copy file to new location.
+    console.log('moving to', moduleOut)
     fs.copyFile(moduleSrc, moduleOut, (err) => {
       if (err) {
         throw err
