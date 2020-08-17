@@ -1,0 +1,20 @@
+"""
+User type
+"""
+type User @collection(name: "users"){
+	netlifyID: String
+	firstName: String
+	lastName: String
+	email: String! @unique(index: "unique_email")
+    recipes: [Recipe!] @relation(name: "user_recipes")
+}
+
+"""
+Recipe type
+"""
+type Recipe @collection(name: "recipes"){
+	name: String!
+	author: User! @relation(name: "user_recipes")
+	ingredients: [String]!
+	steps: [String]!
+}
