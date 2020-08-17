@@ -7,12 +7,16 @@
 const glob = require("glob")
 const path = require("path")
 const fs = require("fs")
+const rimraf = require("rimraf")
 
 exports.onPostBuild = () => {
   // Configure where the functions are kept and where we want to move them.
   const srcLocation = `${__dirname}/src/functions`
   const outputLocation = `${__dirname}/public/functions`
 
+  if (fs.existsSync(outputLocation)) {
+    rimraf.sync(outputLocation)
+  }
   console.log('foo')
 
   // Get all the functions.
@@ -20,7 +24,6 @@ exports.onPostBuild = () => {
   modules.forEach(src => {
     const moduleSrc = path.join(srcLocation, src)
     const moduleOut = path.join(outputLocation, path.basename(src, path.extname(src)) + ".js")
-
     // Copy file to new location.
     fs.copyFile(moduleSrc, moduleOut, (err) => {
       if (err) {
