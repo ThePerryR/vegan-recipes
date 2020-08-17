@@ -1,4 +1,4 @@
 [build]
-  functions = "builtFunctions"
+  functions = "functions"
 [dev]
-  functions = "builtFunctions"
+  functions = "functions"

@@ -32,7 +32,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "netlify dev",
     "serve": "gatsby serve",
-    "build:lambda": "netlify-lambda build functions",
+    "build:lambda": "netlify-lambda build builtFunctions",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "postinstall": "netlify-lambda install"
