@@ -13,6 +13,8 @@ exports.onPostBuild = () => {
   const srcLocation = `${__dirname}/builtFunctions`
   const outputLocation = `${__dirname}/public/functions`
 
+  console.log('foo')
+
   // Get all the functions.
   const modules = glob.sync("*.js", { cwd: srcLocation })
   modules.forEach(src => {
