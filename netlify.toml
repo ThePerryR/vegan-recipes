@@ -1,0 +1,4 @@
+[build]
+  functions = "builtFunctions"
+[dev]
+  functions = "builtFunctions"
